@@ -1,4 +1,5 @@
 import './Header.css';
+import { Link } from 'react-router-dom';
 
 import logoIcon from '../../assets/Icons/logo.svg';
 import searchIcon from '../../assets/Icons/search.svg';
@@ -10,49 +11,55 @@ import notifIcon from '../../assets/Icons/bell-01.svg';
 const GuestProfile = () => (
   <div className='profile-container'>
     <div className='cart'>
-      <button className='cart-button' type='button' onClick={() => console.log("Cart!")}>
+      <Link to="/cart" className='cart-link'>
         <img src={cartIcon} alt='cart' />
-      </button>
+      </Link>
     </div>
 
+    {/* Log In button */}
     <div className='log-in'>
-      <button className='login-button' type='button' onClick={() => console.log("Log In!")}>
+      <Link to="/login" className='login-button'>
         Log In
-      </button>
+      </Link>
     </div>
 
+    {/* Sign Up button */}
     <div className='sign-up'>
-      <button className='signup-button' type='button' onClick={() => console.log("Sign Up!")}>
+      <Link to="/signup" className='signup-button'>
         Sign Up
-      </button>
+      </Link>
     </div>
   </div>
 );
 
 const UserProfile = () => (
   <div className='profile-container'>
+    {/* Favorite */}
     <div className='favorite'>
-      <button className='favorite-button' type='button' onClick={() => console.log("Favorite!")}>
+      <Link to="/favorites" className='favorite-link'>
         <img src={heartIcon} alt='favorite' />
-      </button>
+      </Link>
     </div>
 
+    {/* Cart */}
     <div className='cart'>
-      <button className='cart-button' type='button' onClick={() => console.log("Cart!")}>
+      <Link to="/cart" className='cart-link'>
         <img src={cartIcon} alt='cart' />
-      </button>
+      </Link>
     </div>
 
+    {/* Notification */}
     <div className='notification'>
-      <button className='notification-button' type='button' onClick={() => console.log("Notification!")}>
+      <Link to="/notification" className='notification-link'>
         <img src={notifIcon} alt='notification' />
-      </button>
+      </Link>
     </div>
 
+    {/* Profile */}
     <div className='avatar'>
-      <button className='profile-button' type='button' onClick={() => console.log("Profile!")}>
+      <Link to="/profile" className='profile-button'>
         T
-      </button>
+      </Link>
     </div>
   </div>
 );
@@ -68,10 +75,9 @@ function Header() {
 
       {/* Categories */}
       <div className='categories-container'>
-        {/* Fixed: Wrapped in arrow function */}
-        <button className='categories-button' type='button' onClick={() => console.log("Categories!")}>
+        <Link to="/categories" className='categories-link'>
           Categories
-        </button>
+        </Link>
       </div>
 
       {/* Searchbar */}
@@ -84,14 +90,14 @@ function Header() {
 
       {/* Teaching */}
       <div className='teach-container'>
-        <button className='teach-button' type='button' onClick={() => console.log("Teaching!")}>
+        <Link to="/teaching" className='teach-link'>
           Teach on Byway
-        </button>
+        </Link>
       </div>
 
       {/* Profile Section */}
       {/* <GuestProfile /> */}
-      <UserProfile />
+      {/* <UserProfile /> */}
     </div>
   );
 }
