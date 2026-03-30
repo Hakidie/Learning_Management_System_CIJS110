@@ -77,11 +77,11 @@
 }
 
 /* Buttons */
-.categories-button,
-.teach-button,
-.favorite-button,
-.cart-button,
-.notification-button,
+.categories-link,
+.teach-link,
+.favorite-link,
+.cart-link,
+.notification-link,
 .profile-button {
   border: none;
   background-color: transparent;
@@ -89,6 +89,7 @@
   font-weight: 500;
   color: #334155;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .profile-button {
@@ -113,6 +114,7 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .login-button {
