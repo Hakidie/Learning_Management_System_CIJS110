@@ -1,9 +1,9 @@
 /* Sidebar container */
-.sidebar-container {
-  padding: 40px;
+/* .sidebar-container {
+  padding: 0px 40px 0px 40px;
   border: 1px solid red;
   font-family: 'Inter';
-}
+} */
 
 /* Sidebar frame */
 .sidebar-frame {
@@ -113,12 +113,17 @@
 }
 
 .sidebar-bottom-container ul li:hover,
-.sidebar-bottom-container ul li:hover:last-child {
+.sidebar-bottom-container ul li:hover:last-child,
+.sidebar-bottom-container ul li a.active {
   border: none;
   background-color: #0F172A;
   a {
     color: white; 
   }
+}
+
+.sidebar-bottom-container ul li a.active {
+  color: white !important;
 }
 
 .sidebar-bottom-container ul li:hover:last-child {

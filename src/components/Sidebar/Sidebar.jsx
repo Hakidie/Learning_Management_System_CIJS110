@@ -1,5 +1,5 @@
 import './Sidebar.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import profilePicture from '../../assets/Pictures/profile_picture.png';
 import shareIcon from '../../assets/Icons/share.svg';
@@ -25,11 +25,11 @@ function Sidebar() {
         {/* Bottom */}
         <div className='sidebar-bottom-container'>
           <ul>
-            <li><Link className='profile-link' to="/profile">Profile</Link></li>
-            <li><Link className='my-courses-link' to="/my_courses">My Courses</Link></li>
-            <li><Link className='teachers-link' to="/teachers">Teachers</Link></li>
-            <li><Link className='messages-link' to="/messages">Message</Link></li>
-            <li><Link className='my-reviews-link' to="/my_reviews">My Reviews</Link></li>
+            <li><NavLink className='profile-link' to="/user/profile">Profile</NavLink></li>
+            <li><NavLink className='my-courses-link' to="/user/my_courses">My Courses</NavLink></li>
+            <li><NavLink className='teachers-link' to="/user/my_teachers">Teachers</NavLink></li>
+            <li><NavLink className='messages-link' to="/user/my_messages">Message</NavLink></li>
+            <li><NavLink className='my-reviews-link' to="/user/my_reviews">My Reviews</NavLink></li>
           </ul>
         </div>
       </div>
