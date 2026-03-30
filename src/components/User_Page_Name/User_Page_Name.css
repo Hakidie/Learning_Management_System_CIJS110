@@ -1,0 +1,5 @@
+.user-page-name-container {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
