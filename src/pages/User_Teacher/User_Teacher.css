@@ -5,3 +5,13 @@
     
     /* border: 1px solid red;ss */
 }
+
+.teacher-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 212px));
+    gap: 16px;
+
+    width: 100%; /*942px;*/
+    height: auto;
+    /* border: 1px solid red; */
+}
