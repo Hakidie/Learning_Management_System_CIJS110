@@ -1,10 +1,10 @@
 import './User_Page_Name.css';
 
-function UserPageName({ pageName, totalCourses }) {
+function UserPageName({ pageName, total }) {
   return (
     <div className='user-page-name-container'>
       <h2>{pageName}</h2>
-      <p>({totalCourses})</p>
+      <p>({total})</p>
     </div>
   );
 }
