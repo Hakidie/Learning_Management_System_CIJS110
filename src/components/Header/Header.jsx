@@ -97,7 +97,7 @@ function Header() {
 
       {/* Profile Section */}
       {/* <GuestProfile /> */}
-      {/* <UserProfile /> */}
+      <UserProfile />
     </div>
   );
 }

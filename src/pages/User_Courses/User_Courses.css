@@ -1,0 +1,17 @@
+.user-courses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    
+    /* border: 1px solid red;ss */
+}
+
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(298px, 298px));
+    gap: 20px;
+
+    width: 100%; /*942px;*/
+    height: auto;
+    /* border: 1px solid red; */
+}
