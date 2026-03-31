@@ -1,0 +1,7 @@
+.user-teacher-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    
+    /* border: 1px solid red;ss */
+}
