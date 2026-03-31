@@ -1,9 +1,33 @@
 import './Course_Card_User.css';
 
-function CourseCard() {
+import { Link } from 'react-router-dom';
+import { Star, StarHalf } from 'lucide-react';
+import StarRating from '../StarRating/StarRating';
+
+function CourseCard({ course }) {
   return (
-    <div className='Course-card-container'>
-      
+    <div className='course-card-container'>
+      <Link to={`/course/${course.id}`} className='course-card-link' style={{ textDecoration: 'none', color: 'inherit' }}>
+        <div className='course-card'>
+          <div className='course-card-picture'>
+            <img src={course.img} alt={course.title} />
+          </div>
+
+          <h3>{course.title}</h3>
+
+          <p>By {course.instructor}</p>
+
+          {/* <div className='course-progress-bar'>
+          <div className='course-progress' style={{width: '40%'}}>
+        </div></div> */}
+
+          <div className='course-rating'>
+            <StarRating rating={course.rating}/>
+
+            <p>{course.totalRatings} Ratings</p>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }
