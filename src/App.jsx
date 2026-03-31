@@ -4,6 +4,9 @@ import { Routes, Route } from 'react-router-dom';
 
 import UserPage from './pages/User/User';
 import UserCoursesPage from './pages/User_Courses/User_Courses';
+import UserTeachersPage from './pages/User_Teacher/User_Teacher';
+import UserMessagesPage from './pages/User_Messages/User_Messages';
+import UserReviewsPage from './pages/User_Reviews/User_Reviews';
 
 function App() {
   return (
@@ -14,9 +17,9 @@ function App() {
           <Route index element={<div>Profile</div>} />
           <Route path="profile" element={<div>Profile</div>} />
           <Route path="my_courses" element={<UserCoursesPage />} />
-          <Route path="my_teachers" element={<div>My Teachers</div>} />
-          <Route path="my_messages" element={<div>My Messages</div>} />
-          <Route path="my_reviews" element={<div>My Reviews</div>} />
+          <Route path="my_teachers" element={<UserTeachersPage />} />
+          <Route path="my_messages" element={<UserMessagesPage />} />
+          <Route path="my_reviews" element={<UserReviewsPage />} />
         </Route>
       </Routes>
     </>
