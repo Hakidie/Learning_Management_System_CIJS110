@@ -31,7 +31,7 @@ function UserTeacher() {
 
       <div className='teacher-container'>
         {displayedTeachers.map((item) => (
-          <TeacherCard key={item.id} teacher={item} />
+          <TeacherCard key={item.id} teacher={item} viewType={'user'}/>
         ))}
       </div>
     </div>

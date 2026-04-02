@@ -1,0 +1,62 @@
+.course-sidebar-frame {
+  width: 400px;
+  /* height: 588px; */
+  /* padding: 24px 22px; */
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+}
+
+.course-sidebar-buy-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+
+  img {
+    width: 356px;
+    height: 200px;
+    border-radius: 8px;
+  }
+
+  p {
+    font-size: 24px;
+    font-weight: 600;
+    color: #0F172A;
+  }
+
+  button {
+    height: 48px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+}
+
+.add-to-cart-button {
+  border: none;
+  background-color: #020617;
+  color: white;
+}
+
+.buy-now-button {
+  border: 1px solid #0F172A;
+  background-color: transparent;
+  color: #020617;
+}
+
+.course-sidebar-share-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 24px 24px 28px 24px;
+  border-top: 1px solid #E2E8F0;
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0F172A;
+  }
+}

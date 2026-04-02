@@ -57,7 +57,7 @@ const UserProfile = () => (
 
     {/* Profile */}
     <div className='avatar'>
-      <Link to="/profile" className='profile-button'>
+      <Link to="/user/profile" className='profile-button'>
         T
       </Link>
     </div>

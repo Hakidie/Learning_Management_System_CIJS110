@@ -6,6 +6,8 @@ import UserCoursesPage from '../pages/User_Courses/User_Courses';
 import UserTeachersPage from '../pages/User_Teacher/User_Teacher';
 import UserMessagesPage from '../pages/User_Messages/User_Messages';
 import UserReviewsPage from '../pages/User_Reviews/User_Reviews';
+import CategoriesPage from '../pages/Categories/Categories';
+import CourseInfoPage from '../pages/CourseInfo/CourseInfo';
 
 export const router = createBrowserRouter([
   {
@@ -13,12 +15,25 @@ export const router = createBrowserRouter([
     element: <Navigate to="/user/profile" replace />, // Redirect home to profile
   },
   {
+    path: "/categories",
+    children: [
+      {
+        index: true,
+        element: <CategoriesPage />,
+      },
+      {
+        path: "courses/:id",
+        element: <CourseInfoPage />,
+      },
+    ]
+  },
+  {
     path: "/user",
     element: <UserPage />, // The "Parent"
     children: [
       {
-        index: true, 
-        element: <Navigate to="profile" replace /> 
+        index: true,
+        element: <Navigate to="profile" replace />
       },
       {
         path: "profile",
