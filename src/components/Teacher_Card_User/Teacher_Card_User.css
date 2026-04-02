@@ -1,11 +1,12 @@
 .teacher-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 16px;
 
   width: 212px;
-  height: 301px;
+  /* height: 301px; */
   padding: 16px;
 
   border-radius: 16px;
@@ -57,4 +58,33 @@
   font-weight: 500;
   color: white;
   cursor: pointer;
+}
+
+.teacher-card .teacher-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 180px;
+  height: 40px;
+
+  /* border: 1px solid red; */
+  .stars-rating {
+    width: 43px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 13px;
+      font-weight: 500;
+      color: #0F172A;
+    }
+  }
+
+  p {
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+  }
 }
