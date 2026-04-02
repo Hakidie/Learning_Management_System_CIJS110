@@ -1,0 +1,21 @@
+.categories-page-container {
+    
+}
+
+.categories-title {
+    padding: 40px 80px 0px 80px;
+    border: 1px solid red;
+}
+
+.categories-content-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 24px 80px;
+    border: 1px solid red;
+}
+
+.categories-content {
+    width: 100%;
+    /* border: 1px solid red; */
+}

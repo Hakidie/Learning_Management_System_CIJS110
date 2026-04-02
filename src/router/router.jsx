@@ -6,6 +6,7 @@ import UserCoursesPage from '../pages/User_Courses/User_Courses';
 import UserTeachersPage from '../pages/User_Teacher/User_Teacher';
 import UserMessagesPage from '../pages/User_Messages/User_Messages';
 import UserReviewsPage from '../pages/User_Reviews/User_Reviews';
+import CategoriesPage from '../pages/Categories/Categories';
 
 export const router = createBrowserRouter([
   {
@@ -13,12 +14,16 @@ export const router = createBrowserRouter([
     element: <Navigate to="/user/profile" replace />, // Redirect home to profile
   },
   {
+    path: "categories",
+    element: <CategoriesPage />,
+  },
+  {
     path: "/user",
     element: <UserPage />, // The "Parent"
     children: [
       {
-        index: true, 
-        element: <Navigate to="profile" replace /> 
+        index: true,
+        element: <Navigate to="profile" replace />
       },
       {
         path: "profile",
