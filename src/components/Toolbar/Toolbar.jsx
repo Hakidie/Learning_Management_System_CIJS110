@@ -6,31 +6,39 @@ import searchIcon from '../../assets/Icons/search.svg';
 import downArrowIcon from '../../assets/Icons/down-arrow.svg';
 import filterIcon from '../../assets/Icons/filter.svg';
 
-function Toolbar() {
-  // 1. State to track if dropdowns are open
+function Toolbar({ currentSort, currentFilter, onSortChange, onFilterChange, onSearch }) {
+  // State to track if dropdowns are open
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
-  // 2. State to track the currently selected values
-  const [currentSort, setCurrentSort] = useState("Newest");
-  const [currentFilter, setCurrentFilter] = useState("Filter");
+  const [inputValue, setInputValue] = useState("");
 
   // Handlers to update state and close dropdown
   const handleSortClick = (value) => {
-    setCurrentSort(value);
     setIsSortOpen(false);
+    if (onSortChange) onSortChange(value);
   };
 
   const handleFilterClick = (value) => {
-    setCurrentFilter(value);
     setIsFilterOpen(false);
+    if (onFilterChange) onFilterChange(value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      onSearch(inputValue);
+    }
   };
 
   return (
     <div className='toolbar-container'>
       {/* Searchbar */}
       <div className='toolbar-searchbar'>
-        <input type="text" id="search-input" placeholder="Search" />
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleKeyDown} />
         <img src={searchIcon} alt="search-icon" />
       </div>
 
