@@ -1,13 +1,12 @@
 import './Course_Card_User.css';
 
 import { Link } from 'react-router-dom';
-import { Star, StarHalf } from 'lucide-react';
 import StarRating from '../StarRating/StarRating';
 
 function CourseCard({ course, viewType }) {
   return (
     <div className='course-card-container'>
-      <Link to={`/course/${course.id}`} className='course-card-link' style={{ textDecoration: 'none', color: 'inherit' }}>
+      <Link to={`courses/${course.id}`} className='course-card-link' style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className='course-card'>
           <div className='course-card-picture'>
             <img src={course.img} alt={course.title} />
