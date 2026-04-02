@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import UserPage from '../pages/User/User';
+import UserProfilePage from '../pages/User_Profile/UserProfile';
 import UserCoursesPage from '../pages/User_Courses/User_Courses';
 import UserTeachersPage from '../pages/User_Teacher/User_Teacher';
 import UserMessagesPage from '../pages/User_Messages/User_Messages';
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <div>Profile Page Component</div>,
+        element: <UserProfilePage />,
       },
       {
         path: "my_courses",
