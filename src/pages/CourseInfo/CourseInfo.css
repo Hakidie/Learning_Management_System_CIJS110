@@ -1,0 +1,22 @@
+.course-info-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 40px 80px;
+}
+
+.course-info {
+  width: 100%;
+  /* border: 1px solid red; */
+}
+
+.course-info-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.course-info-description {
+  font-size: 16px;
+  color: #334155;
+}
