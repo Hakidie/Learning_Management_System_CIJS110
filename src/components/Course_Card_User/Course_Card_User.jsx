@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Star, StarHalf } from 'lucide-react';
 import StarRating from '../StarRating/StarRating';
 
-function CourseCard({ course }) {
+function CourseCard({ course, viewType }) {
   return (
     <div className='course-card-container'>
       <Link to={`/course/${course.id}`} className='course-card-link' style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -26,6 +26,10 @@ function CourseCard({ course }) {
 
             <p>{course.totalRatings} Ratings</p>
           </div>
+
+          {viewType === 'default' && (
+            <h4>${course.price}</h4>
+          )}
         </div>
       </Link>
     </div>

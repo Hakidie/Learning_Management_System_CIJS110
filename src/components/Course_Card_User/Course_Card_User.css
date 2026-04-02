@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 8px;
 
   width: 298px;
-  height: 282px;
+  height: 312px; /*282*/
   padding: 16px;
 
   border-radius: 16px;
@@ -29,6 +30,12 @@
 .course-card p {
   font-size: 14px;
   color: #334155;
+}
+
+.course-card h4 {
+  font-size: 20px;
+  font-weight: semiBold;
+  color: #0F172A;
 }
 
 .course-progress-bar,
