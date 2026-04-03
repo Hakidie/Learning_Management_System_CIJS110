@@ -9,24 +9,24 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import CourseSidebar from '../../components/CourseSidebar/CourseSidebar';
 import StarRating from '../../components/StarRating/StarRating';
+import CourseInfoTab from '../../components/CourseInfoTab/CourseInfoTab';
 
 const CourseInfo = ({ }) => {
   const coursesData = getResource("courses");
+  const teachersData = getResource("teachers");
 
   const { id } = useParams();
 
   const course = coursesData.find(c => c.id.toString() === id.toString());
 
-  const [activeTab, setActiveTab] = useState('description');
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'description': return <p>{course?.description}</p>;
-      case 'instructor': return <p>Instructor: {course?.instructor}</p>;
-      case 'syllabus': return <p>Syllabus details here...</p>;
-      case 'reviews': return <p>User reviews here...</p>;
-      default: return null;
-    }
-  };
+  // const teacher = teachersData && course
+  //   ? teachersData.find(t =>
+  //     t.name?.trim().toLowerCase() === course.instructor?.trim().toLowerCase()
+  //   )
+  //   : null;
+
+  const teacher = teachersData?.find(t => t.name === course?.instructor);
+  console.log(teacher);
 
   return (
     <div className='course-info-page-container'>
@@ -59,16 +59,7 @@ const CourseInfo = ({ }) => {
               </div>
             </div>
 
-            <div className='course-info-buttons-container'>
-              <button onClick={() => setActiveTab('description')}>Description</button>
-              <button onClick={() => setActiveTab('instructor')}>Instructor</button>
-              <button onClick={() => setActiveTab('syllabus')}>Syllabus</button>
-              <button onClick={() => setActiveTab('reviews')}>Reviews</button>
-            </div>
-
-            <div className="course-tab-content">
-              {renderContent()}
-            </div>
+            <CourseInfoTab courseData={course} teacherData={teacher} />
           </div>
         </div>
 
