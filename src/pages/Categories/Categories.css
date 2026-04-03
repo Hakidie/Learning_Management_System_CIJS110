@@ -21,11 +21,11 @@
 
 .categories-content {
     display: grid;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     grid-template-columns: repeat(auto-fill, minmax(298px, 298px));
-    gap: 40px;
+    gap: 20px;
 
     width: 100%;
     height: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
