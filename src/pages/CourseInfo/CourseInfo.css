@@ -10,6 +10,13 @@
   /* border: 1px solid red; */
 }
 
+.course-info-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+} 
+
 .course-info-title {
   font-size: 40px;
   font-weight: 700;
@@ -19,4 +26,29 @@
 .course-info-description {
   font-size: 16px;
   color: #334155;
+}
+
+.course-info-buttons-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+
+  button {
+    width: 148px;
+    height: 57px;
+    padding: 18px 21px;
+
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    background-color: transparent;
+    font-size: 14px;;
+    color: #0F172A;
+    cursor: pointer;
+  }
+
+  button.active {
+    border: none;
+    background-color: #EFF6FF;
+  }
 }
