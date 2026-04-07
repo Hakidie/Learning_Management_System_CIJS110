@@ -6,11 +6,11 @@ import UserPageName from '../../components/User_Page_Name/User_Page_Name';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import TeacherCard from '../../components/Teacher_Card_User/Teacher_Card_User';
 
-import getResource from '../../hooks/getResources';
+import useResource from '../../hooks/getResources';
 import { processDataUtils } from '../../utils/toolbar';
 
 function UserTeacher() {
-  const teachersData = getResource("teachers");
+  const teachersData = useResource("teachers");
   const [currentSort, setCurrentSort] = useState("Newest");
   const [currentFilter, setCurrentFilter] = useState("Filter");
   const [searchQuery, setSearchQuery] = useState("");

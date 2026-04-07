@@ -8,12 +8,12 @@ import CategorySidebar from '../../components/CategorySidebar/CategorySidebar';
 import SortButton from '../../components/SortButton/SortButton';
 import FilterButton from '../../components/FilterButton/FilterButton';
 import { processDataUtils } from '../../utils/toolbar';
-import getResource from '../../hooks/getResources';
+import useResource from '../../hooks/getResources';
 import CourseCard from '../../components/Course_Card_User/Course_Card_User';
 // import Sidebar from '../../components/Sidebar/Sidebar';
 
 function Categories() {
-  const coursesData = getResource("courses");
+  const coursesData = useResource("courses");
   const [currentSort, setCurrentSort] = useState("Newest");
   const [currentFilter, setCurrentFilter] = useState("Filter");
 
