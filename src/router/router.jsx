@@ -12,7 +12,7 @@ import CourseInfoPage from '../pages/CourseInfo/CourseInfo';
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/user/profile" replace />, // Redirect home to profile
+    element: <Navigate to="/user/1/profile" replace />, // Redirect home to profile with default userId
   },
   {
     path: "/categories",
@@ -28,13 +28,9 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path: "/user",
+    path: "/user/:userId",
     element: <UserPage />, // The "Parent"
     children: [
-      {
-        index: true,
-        element: <Navigate to="profile" replace />
-      },
       {
         path: "profile",
         element: <UserProfilePage />,
@@ -57,6 +53,14 @@ export const router = createBrowserRouter([
       },
       // ... other nested routes
     ],
+  },
+  {
+    path: "/user/profile/*",
+    element: <Navigate to="/user/1/profile" replace />,
+  },
+  {
+    path: "/user/*",
+    element: <Navigate to="/user/1/profile" replace />,
   },
   {
     path: "*",

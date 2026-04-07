@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function getResource(resourceName) {
+function useResource(resourceName) {
   const [resource, setResource] = useState([]);
 
   useEffect(() => {
@@ -24,4 +24,4 @@ function getResource(resourceName) {
   return resource;
 }
 
-export default getResource;
+export default useResource;

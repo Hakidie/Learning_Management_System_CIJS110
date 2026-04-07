@@ -1,12 +1,17 @@
 import './UserProfile.css';
 
 import React, { useState, useEffect } from 'react';
+import { useParams, useOutletContext } from 'react-router-dom';
 
 import placeholderProfilePicture from '../../assets/Pictures/placeholderProfile.svg';
 
-import getResource from '../../hooks/getResources';
+import useUpdateProfile from '../../hooks/useUpdateProfile';
 
 function UserProfile() {
+  const { userId } = useParams();
+  const { userData } = useOutletContext();
+  const { updateProfile, loading, error, success } = useUpdateProfile();
+  
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
@@ -16,18 +21,41 @@ function UserProfile() {
     website: '',
     x: '',
     linkedln: '',
-    Youtube: '',
-    Facebook: '',
+    youtube: '',
+    facebook: '',
   });
+
+  // Load user data when available
+  useEffect(() => {
+    if (userData) {
+      setProfile({
+        firstName: userData.firstName || '',
+        lastName: userData.lastName || '',
+        headline: userData.headline || '',
+        description: userData.description || '',
+        language: userData.language || 'English',
+        website: userData.links?.website || '',
+        x: userData.links?.x || '',
+        linkedln: userData.links?.linkedln || '',
+        Youtube: userData.links?.youtube || '',
+        Facebook: userData.links?.facebook || '',
+      });
+    }
+  }, [userData]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setProfile((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Saving profile data:", profile);
+    try {
+      await updateProfile(userId, profile);
+      alert('Profile updated successfully!');
+    } catch (err) {
+      alert('Failed to update profile: ' + err.message);
+    }
   };
 
   return (
@@ -39,12 +67,12 @@ function UserProfile() {
           <div className='name-box'>
             <div className='first-name'>
               <span>First Name</span>
-              <input type='text' id='firstName' placeholder='First name' onChange={handleChange} />
+              <input type='text' id='firstName' placeholder='First name' value={profile.firstName} onChange={handleChange} />
             </div>
 
             <div className='last-name'>
               <span>Last Name</span>
-              <input type='text' id='lastName' placeholder='Last name' onChange={handleChange} />
+              <input type='text' id='lastName' placeholder='Last name' value={profile.lastName} onChange={handleChange} />
             </div>
           </div>
 
@@ -52,7 +80,7 @@ function UserProfile() {
           <div className='headline-box'>
             <div className='headline'>
               <span>Headline</span>
-              <input type='text' id='headline-input' placeholder='Headline' onChange={handleChange} />
+              <input type='text' id='headline' placeholder='Headline' value={profile.headline} onChange={handleChange} />
             </div>
           </div>
 
@@ -60,23 +88,22 @@ function UserProfile() {
           <div className='description-box'>
             <div className='description'>
               <span>Description</span>
-              <textarea id='description-input' placeholder='Description' onChange={handleChange} />
+              <textarea id='description' placeholder='Description' value={profile.description} onChange={handleChange} />
             </div>
           </div>
 
           {/* Language */}
-          <div className='language-box'>
+          {/* <div className='language-box'>
             <div className='language'>
               <span>Language</span>
               <div className='language-input'>
-                <input type='text' placeholder='Language' />
-                <select>
+                <select id='language' value={profile.language} onChange={handleChange}>
                   <option value='Vietnamese'>Vietnamese</option>
                   <option value='English'>English</option>
                 </select>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Profile image */}
@@ -110,33 +137,40 @@ function UserProfile() {
           {/* Website */}
           <div className='link-box'>
             <span>Website</span>
-            <input type='text' id='website-input' placeholder='Website URL' onChange={handleChange} />
+            <input type='text' id='website' placeholder='Website URL' value={profile.website} onChange={handleChange} />
           </div>
 
           {/* X (twitter) */}
           <div className='link-box'>
             <span>X</span>
-            <input type='text' id='x-input' placeholder='X URL' onChange={handleChange} />
+            <input type='text' id='x' placeholder='X URL' value={profile.x} onChange={handleChange} />
           </div>
 
           {/* LinkedIn */}
           <div className='link-box'>
             <span>LinkedIn</span>
-            <input type='text' id='linkedin-input' placeholder='LinkedIn URL' onChange={handleChange}/>
+            <input type='text' id='linkedln' placeholder='LinkedIn URL' value={profile.linkedln} onChange={handleChange}/>
           </div>
 
           {/* Youtube */}
           <div className='link-box'>
             <span>Youtube</span>
-            <input type='text' id='youtube-input' placeholder='Youtube URL' onChange={handleChange} />
+            <input type='text' id='youtube' placeholder='Youtube URL' value={profile.youtube} onChange={handleChange} />
           </div>
 
           {/* Facebook */}
           <div className='link-box'>
             <span>Facebook</span>
-            <input type='text' id='facebook-input' placeholder='Facebook URL' onChange={handleChange} />
+            <input type='text' id='facebook' placeholder='Facebook URL' value={profile.facebook} onChange={handleChange} />
           </div>
         </div>
+        
+        {/* Submit button */}
+        <button type='submit' style={{ marginTop: '20px', padding: '10px 20px' }} disabled={loading}>
+          {loading ? 'Saving...' : 'Save Changes'}
+        </button>
+        {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+        {success && <p style={{ color: 'green' }}>Profile updated successfully!</p>}
       </form>
     </div>
   );

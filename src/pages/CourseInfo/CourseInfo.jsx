@@ -2,7 +2,7 @@ import './CourseInfo.css';
 
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import getResource from '../../hooks/getResources';
+import useResource from '../../hooks/getResources';
 import GlobeIcon from '../../assets/Icons/globe-02.svg';
 
 import Header from '../../components/Header/Header';
@@ -12,8 +12,8 @@ import StarRating from '../../components/StarRating/StarRating';
 import CourseInfoTab from '../../components/CourseInfoTab/CourseInfoTab';
 
 const CourseInfo = ({ }) => {
-  const coursesData = getResource("courses");
-  const teachersData = getResource("teachers");
+  const coursesData = useResource("courses");
+  const teachersData = useResource("teachers");
 
   const { id } = useParams();
 
