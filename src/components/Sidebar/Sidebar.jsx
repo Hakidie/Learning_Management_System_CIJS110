@@ -1,10 +1,12 @@
 import './Sidebar.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 
 import profilePicture from '../../assets/Pictures/profile_picture.png';
 import shareIcon from '../../assets/Icons/share.svg';
 
 function Sidebar() {
+  const { userId } = useParams();
+
   return (
     <div className='sidebar-container'>
       <div className='sidebar-frame'>
@@ -25,11 +27,11 @@ function Sidebar() {
         {/* Bottom */}
         <div className='sidebar-bottom-container'>
           <ul>
-            <li><NavLink className='profile-link' to="/user/profile">Profile</NavLink></li>
-            <li><NavLink className='my-courses-link' to="/user/my_courses">My Courses</NavLink></li>
-            <li><NavLink className='teachers-link' to="/user/my_teachers">Teachers</NavLink></li>
-            <li><NavLink className='messages-link' to="/user/my_messages">Message</NavLink></li>
-            <li><NavLink className='my-reviews-link' to="/user/my_reviews">My Reviews</NavLink></li>
+            <li><NavLink className='profile-link' to={`/user/${userId}/profile`}>Profile</NavLink></li>
+            <li><NavLink className='my-courses-link' to={`/user/${userId}/my_courses`}>My Courses</NavLink></li>
+            <li><NavLink className='teachers-link' to={`/user/${userId}/my_teachers`}>Teachers</NavLink></li>
+            <li><NavLink className='messages-link' to={`/user/${userId}/my_messages`}>Message</NavLink></li>
+            <li><NavLink className='my-reviews-link' to={`/user/${userId}/my_reviews`}>My Reviews</NavLink></li>
           </ul>
         </div>
       </div>
