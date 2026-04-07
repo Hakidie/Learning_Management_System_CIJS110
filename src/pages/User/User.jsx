@@ -1,12 +1,24 @@
 import './User.css';
 
-import { Outlet } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
+import useResource from '../../hooks/getResources';
+
 function User() {
+  const { userId } = useParams(); // Assumes your route is /user/:userId
+  const [userData, setUserData] = useState(null);
+  const allUsers = useResource("users");
+
+  useEffect(() => {
+    const foundData = allUsers.find(u => u.id === Number(userId));
+    setUserData(foundData);
+  }, [userId, allUsers]);
+
   return (
     <div className='user-page-container'>
       <Header />
@@ -15,7 +27,7 @@ function User() {
         <Sidebar />
 
         <main className='user-content'>
-            <Outlet />
+            <Outlet context={{ userData }}/>
         </main>
       </div>
 
