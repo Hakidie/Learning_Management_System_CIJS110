@@ -21,10 +21,10 @@ function User() {
 
   return (
     <div className='user-page-container'>
-      <Header />
+      <Header userData={userData}/>
 
       <div className='user-content-container'>
-        <Sidebar />
+        <Sidebar userData={userData}/>
 
         <main className='user-content'>
             <Outlet context={{ userData }}/>

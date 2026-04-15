@@ -1,5 +1,5 @@
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import logoIcon from '../../assets/Icons/logo.svg';
 import searchIcon from '../../assets/Icons/search.svg';
@@ -32,7 +32,7 @@ const GuestProfile = () => (
   </div>
 );
 
-const UserProfile = () => (
+const UserProfile = ({ userId,userName }) => (
   <div className='profile-container'>
     {/* Favorite */}
     <div className='favorite'>
@@ -57,14 +57,17 @@ const UserProfile = () => (
 
     {/* Profile */}
     <div className='avatar'>
-      <Link to="/user/profile" className='profile-button'>
-        T
+      <Link to={`/user/${userId}/profile`} className='profile-button'>
+        {userName}
       </Link>
     </div>
   </div>
 );
 
-function Header() {
+function Header({ userData }) {
+  const { userId } = useParams();
+  const userName = userData?.firstName[0].toUpperCase();
+
   return (
     <div className='header-container'>
       {/* Logo */}
@@ -97,7 +100,7 @@ function Header() {
 
       {/* Profile Section */}
       {/* <GuestProfile /> */}
-      <UserProfile />
+      <UserProfile userId={userId} userName={userName}/>
     </div>
   );
 }
