@@ -10,7 +10,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import useResource from '../../hooks/getResources';
 
 function User() {
-  const { userId } = useParams(); // Assumes your route is /user/:userId
+  const { userId } = useParams();
   const [userData, setUserData] = useState(null);
   const allUsers = useResource("users");
 
