@@ -1,0 +1,44 @@
+/* Homepage */
+.banner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 60px 80px 40px 80px;
+}
+
+.banner-content-container {
+    width: 592px;
+    height: 262px;
+}
+
+.banner-content-container h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #0F172A;
+}
+
+.banner-content-container p {
+    margin-top: 16px;
+    font-size: 16px;
+    color: #334155;
+}
+
+.banner-content-container .start-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 238px;
+    height: 48px;
+    margin-top: 24px;
+    padding: 10px 24px;
+    
+    border: none;
+    border-radius: 8px;
+    background-color: #3B82F6;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: medium;
+    color: white;
+}
