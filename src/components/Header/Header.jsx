@@ -1,5 +1,5 @@
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import logoIcon from '../../assets/Icons/logo.svg';
 import searchIcon from '../../assets/Icons/search.svg';
@@ -32,7 +32,7 @@ const GuestProfile = () => (
   </div>
 );
 
-const UserProfile = () => (
+const UserProfile = ({ userId,userName }) => (
   <div className='profile-container'>
     {/* Favorite */}
     <div className='favorite'>
@@ -57,21 +57,25 @@ const UserProfile = () => (
 
     {/* Profile */}
     <div className='avatar'>
-      <Link to="/user/profile" className='profile-button'>
-        T
+      <Link to={`/user/${userId}/profile`} className='profile-button'>
+        {userName}
       </Link>
     </div>
   </div>
 );
 
-function Header() {
+function Header({ viewType, userData }) {
+  const { userId: paramUserId } = useParams();
+  const userId = paramUserId || userData?.id;
+  const userName = userData?.firstName[0].toUpperCase();
+
   return (
     <div className='header-container'>
       {/* Logo */}
-      <div className='logo-container'>
+      <Link to="/" className='logo-container'>
         <img src={logoIcon} alt='Byway logo' />
         <h1>Byway</h1>
-      </div>
+      </Link>
 
       {/* Categories */}
       <div className='categories-container'>
@@ -96,8 +100,13 @@ function Header() {
       </div>
 
       {/* Profile Section */}
-      {/* <GuestProfile /> */}
-      <UserProfile />
+      {viewType === "default" &&
+        <GuestProfile />
+      }
+
+      {viewType !== "default" &&
+        <UserProfile userId={userId} userName={userName}/>
+      }
     </div>
   );
 }

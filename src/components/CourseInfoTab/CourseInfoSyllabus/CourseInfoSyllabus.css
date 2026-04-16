@@ -1,0 +1,61 @@
+.course-info-syllabus-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.course-syllabus {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+}
+
+.course-chapter-container {
+  padding: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.course-chapter-container:last-child {
+  border: none;
+}
+
+.course-chapter-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0F172A;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+.course-lesson {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px;
+
+  padding: 12px 24px;
+
+  button {
+    padding: 12px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #0F172A;
+    cursor: pointer;
+  }
+}

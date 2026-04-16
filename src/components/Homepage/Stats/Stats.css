@@ -1,0 +1,36 @@
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 149px;
+    /* padding: 0px 60px; */
+    background-color: #F8FAFC;
+}
+
+.stats-container .line {
+    width: 0px;
+    height: 55px;
+}
+
+.stats-container .stat-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 192px;
+    height: 69px;
+    white-space: nowrap;
+}
+
+.stats-container .stat-box h2 {
+    font-size: 32px;
+    font-weight: semiBold;
+}
+
+.stats-container .stat-box p {
+    margin-top: auto;
+    font-size: 14px;
+    color: #0F172A;
+}

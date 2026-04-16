@@ -26,6 +26,7 @@
 /* Logo */
 .logo-container {
   width: 83px;
+  text-decoration: none;
 }
 
 .logo-container h1 {

@@ -1,8 +1,9 @@
 import './CourseInfoTab.css';
 
 import { useState } from 'react';
-import DescriptionTab from './CourseInfoDescription/CourseInforDescription'
-import InstructorTab from './CourseInfoIntructor/CourseInfoInstructor'
+import DescriptionTab from './CourseInfoDescription/CourseInforDescription';
+import InstructorTab from './CourseInfoIntructor/CourseInfoInstructor';
+import SyllabusTab from './CourseInfoSyllabus/CourseInfoSyllabus';
 
 const CourseInfoTab = ({ courseData, teacherData }) => {
   const [activeTab, setActiveTab] = useState('description');
@@ -11,7 +12,7 @@ const CourseInfoTab = ({ courseData, teacherData }) => {
     switch (activeTab) {
       case 'description': return <DescriptionTab courseData={courseData}/>;
       case 'instructor': return <InstructorTab teacherData={teacherData}/>;
-      case 'syllabus': return <p>Syllabus details here...</p>;
+      case 'syllabus': return <SyllabusTab courseData={courseData}/>;
       case 'reviews': return <p>User reviews here...</p>;
       default: return null;
     }
@@ -23,7 +24,7 @@ const CourseInfoTab = ({ courseData, teacherData }) => {
         <button onClick={() => setActiveTab('description')}>Description</button>
         <button onClick={() => setActiveTab('instructor')}>Instructor</button>
         <button onClick={() => setActiveTab('syllabus')}>Syllabus</button>
-        <button onClick={() => setActiveTab('reviews')}>Reviews</button>
+        {/* <button onClick={() => setActiveTab('reviews')}>Reviews</button> */}
       </div>
 
       <div className="course-info-tab-content">

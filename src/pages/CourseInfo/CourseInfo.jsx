@@ -1,7 +1,6 @@
 import './CourseInfo.css';
 
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
 import useResource from '../../hooks/getResources';
 import GlobeIcon from '../../assets/Icons/globe-02.svg';
 
@@ -11,19 +10,13 @@ import CourseSidebar from '../../components/CourseSidebar/CourseSidebar';
 import StarRating from '../../components/StarRating/StarRating';
 import CourseInfoTab from '../../components/CourseInfoTab/CourseInfoTab';
 
-const CourseInfo = ({ }) => {
+const CourseInfo = () => {
   const coursesData = useResource("courses");
   const teachersData = useResource("teachers");
 
   const { id } = useParams();
 
   const course = coursesData.find(c => c.id.toString() === id.toString());
-
-  // const teacher = teachersData && course
-  //   ? teachersData.find(t =>
-  //     t.name?.trim().toLowerCase() === course.instructor?.trim().toLowerCase()
-  //   )
-  //   : null;
 
   const teacher = teachersData?.find(t => t.name === course?.instructor);
   console.log(teacher);

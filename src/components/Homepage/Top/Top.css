@@ -1,0 +1,35 @@
+.top-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 31px;
+  padding: 0px 80px;
+  /* border: 1px solid red; */
+}
+
+.top-container-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: semiBold;
+    color: #0F172A;
+  }
+}
+
+.see-all-link {
+  margin-right: 24px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: medium;
+  color: #3B82F6;
+}
+
+.top-card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

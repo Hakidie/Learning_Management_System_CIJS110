@@ -4,7 +4,7 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import profilePicture from '../../assets/Pictures/profile_picture.png';
 import shareIcon from '../../assets/Icons/share.svg';
 
-function Sidebar() {
+function Sidebar({ userData }) {
   const { userId } = useParams();
 
   return (
@@ -16,7 +16,7 @@ function Sidebar() {
             <img src={profilePicture} alt='Profile Picture' />
           </div>
 
-          <h2>John Doe</h2>
+          <h2>{userData?.firstName} {userData?.lastName}</h2>
 
           <button>
             <p>Share Profile</p>
