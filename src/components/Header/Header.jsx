@@ -64,17 +64,18 @@ const UserProfile = ({ userId,userName }) => (
   </div>
 );
 
-function Header({ userData }) {
-  const { userId } = useParams();
+function Header({ viewType, userData }) {
+  const { userId: paramUserId } = useParams();
+  const userId = paramUserId || userData?.id;
   const userName = userData?.firstName[0].toUpperCase();
 
   return (
     <div className='header-container'>
       {/* Logo */}
-      <div className='logo-container'>
+      <Link to="/" className='logo-container'>
         <img src={logoIcon} alt='Byway logo' />
         <h1>Byway</h1>
-      </div>
+      </Link>
 
       {/* Categories */}
       <div className='categories-container'>
@@ -99,8 +100,13 @@ function Header({ userData }) {
       </div>
 
       {/* Profile Section */}
-      {/* <GuestProfile /> */}
-      <UserProfile userId={userId} userName={userName}/>
+      {viewType === "default" &&
+        <GuestProfile />
+      }
+
+      {viewType !== "default" &&
+        <UserProfile userId={userId} userName={userName}/>
+      }
     </div>
   );
 }
