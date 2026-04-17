@@ -3,6 +3,7 @@ const usersData = [
     "id": 1,
     "firstName": "Test",
     "lastName": "Test",
+    "email": "test@gmail.com",
     "headline": "Front-End Developer",
     "description": "Description.",
     "language": "English",
