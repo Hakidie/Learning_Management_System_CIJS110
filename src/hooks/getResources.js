@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getApiUrl } from '../config/api';
 
 function useResource(resourceName) {
   const [resource, setResource] = useState([]);
@@ -6,7 +7,7 @@ function useResource(resourceName) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://mindx-mockup-server.vercel.app/api/resources/${resourceName}?apiKey=69a9288da99f2cbf33b34607`;
+        const url = getApiUrl(resourceName);
         const response = await fetch(url);
         const json = await response.json();
 

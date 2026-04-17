@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getApiUrl, API_BASE_URL, API_KEY } from '../config/api';
 
 function useRegisterUser() {
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ function useRegisterUser() {
     setSuccess(false);
 
     try {
-      const apiBaseUrl = `https://mindx-mockup-server.vercel.app/api/resources/users?apiKey=69a9288da99f2cbf33b34607`;
+      const apiBaseUrl = getApiUrl('users');
       
       // Fetch current users data to check for duplicate email and get next ID
       const getResponse = await fetch(apiBaseUrl);
