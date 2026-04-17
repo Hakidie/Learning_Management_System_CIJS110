@@ -8,12 +8,13 @@ import placeholderProfilePicture from '../../assets/Pictures/placeholderProfile.
 import useUpdateProfile from '../../hooks/useUpdateProfile';
 import { useAuth } from '../../hooks/useAuth';
 import useGetUser from '../../hooks/getUsers';
+import { getApiUrl } from '../../config/api';
 
 function UserProfile() {
   const { userId } = useParams();
   // const { userData } = useOutletContext();
   const { updateProfile, loading, error, success } = useUpdateProfile();
-  const { logout } = useAuth();
+  const { logout, login } = useAuth();
   const navigate = useNavigate();
   const allUsers = useGetUser(); // Fetch fresh data from API
   
@@ -63,15 +64,15 @@ function UserProfile() {
     try {
       await updateProfile(userId, profile);
       
-      // Update AuthContext with new user data
-      if (allUsers && allUsers.length > 0) {
-        const updatedUserData = allUsers.find(u => u.id === parseInt(userId));
-        if (updatedUserData) {
-          const { login } = await import('../../hooks/useAuth').then(m => m.useAuth());
-          // Note: We need to use the login function from useAuth context
-          // For now, we'll just refresh the page to reload data
-          window.location.reload();
-        }
+      // Fetch fresh user data from API and update AuthContext
+      const response = await fetch(getApiUrl('users'));
+      const data = await response.json();
+      const freshUsers = data.data.data;
+      const updatedUserData = freshUsers.find(u => u.id === parseInt(userId));
+      
+      if (updatedUserData) {
+        // Update AuthContext with fresh data
+        login(updatedUserData);
       }
       
       alert('Profile updated successfully!');
