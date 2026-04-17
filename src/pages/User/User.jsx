@@ -1,23 +1,15 @@
 import './User.css';
 
-import { useParams, Outlet } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
-import useResource from '../../hooks/getResources';
+import { useAuth } from '../../hooks/useAuth';
 
 function User() {
-  const { userId } = useParams();
-  const [userData, setUserData] = useState(null);
-  const allUsers = useResource("users");
-
-  useEffect(() => {
-    const foundData = allUsers.find(u => u.id === Number(userId));
-    setUserData(foundData);
-  }, [userId, allUsers]);
+  const { user: userData } = useAuth();
 
   return (
     <div className='user-page-container'>

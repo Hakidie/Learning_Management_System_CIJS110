@@ -1,11 +1,13 @@
 import './Header.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import logoIcon from '../../assets/Icons/logo.svg';
 import searchIcon from '../../assets/Icons/search.svg';
 import heartIcon from '../../assets/Icons/heart.svg';
 import cartIcon from '../../assets/Icons/cart.svg';
 import notifIcon from '../../assets/Icons/bell-01.svg';
+
+import { useAuth } from '../../hooks/useAuth';
 
 
 const GuestProfile = () => (
@@ -65,9 +67,9 @@ const UserProfile = ({ userId,userName }) => (
 );
 
 function Header({ viewType, userData }) {
-  const { userId: paramUserId } = useParams();
-  const userId = paramUserId || userData?.id;
-  const userName = userData?.firstName[0].toUpperCase();
+  const { isAuthenticated, user } = useAuth();
+  const userId = user?.id;
+  const userName = user?.firstName?.[0]?.toUpperCase() || 'U';
 
   return (
     <div className='header-container'>
@@ -100,13 +102,11 @@ function Header({ viewType, userData }) {
       </div>
 
       {/* Profile Section */}
-      {viewType === "default" &&
+      {!isAuthenticated ? (
         <GuestProfile />
-      }
-
-      {viewType !== "default" &&
-        <UserProfile userId={userId} userName={userName}/>
-      }
+      ) : (
+        <UserProfile userId={userId} userName={userName} />
+      )}
     </div>
   );
 }

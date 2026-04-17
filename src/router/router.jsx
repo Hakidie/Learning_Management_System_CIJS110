@@ -1,6 +1,8 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import HomePage from '../pages/Homepage/Homepage';
+import LoginPage from '../pages/Login/Login';
+import RegisterPage from '../pages/Register/Register';
 import UserPage from '../pages/User/User';
 import UserProfilePage from '../pages/User_Profile/UserProfile';
 import UserCoursesPage from '../pages/User_Courses/User_Courses';
@@ -9,12 +11,20 @@ import UserMessagesPage from '../pages/User_Messages/User_Messages';
 import UserReviewsPage from '../pages/User_Reviews/User_Reviews';
 import CategoriesPage from '../pages/Categories/Categories';
 import CourseInfoPage from '../pages/CourseInfo/CourseInfo';
+import { ProtectedRoute } from '../components/ProtectedRoute';
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
-    // element: <Navigate to="/user/1/profile" replace />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
   {
     path: "/categories",
@@ -31,7 +41,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/user/:userId",
-    element: <UserPage />, // The "Parent"
+    element: (
+      <ProtectedRoute>
+        <UserPage />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "profile",
@@ -53,19 +67,18 @@ export const router = createBrowserRouter([
         path: "my_messages",
         element: <UserMessagesPage />,
       },
-      // ... other nested routes
     ],
   },
   {
     path: "/user/profile/*",
-    element: <Navigate to="/user/1/profile" replace />,
+    element: <Navigate to="/login" replace />,
   },
   {
     path: "/user/*",
-    element: <Navigate to="/user/1/profile" replace />,
+    element: <Navigate to="/login" replace />,
   },
   {
     path: "*",
-    element: <div>404 - Not Found</div>, // Catch-all route
+    element: <div>404 - Not Found</div>,
   }
 ]);
