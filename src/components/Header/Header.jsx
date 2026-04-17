@@ -27,7 +27,7 @@ const GuestProfile = () => (
 
     {/* Sign Up button */}
     <div className='sign-up'>
-      <Link to="/signup" className='signup-button'>
+      <Link to="/register" className='signup-button'>
         Sign Up
       </Link>
     </div>

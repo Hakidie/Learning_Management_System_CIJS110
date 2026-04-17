@@ -243,3 +243,21 @@
     outline: none;
   }
 }
+
+/* Button */
+.user-profile-button {
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+
+  &.save {
+    background-color: #0F172A;
+  }
+
+  &.logout {
+    background-color: #e32222;
+  }
+}
