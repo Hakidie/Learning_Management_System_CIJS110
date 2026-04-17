@@ -20,8 +20,7 @@ function useRegisterUser() {
       }
 
       const getData = await getResponse.json();
-      const resourceData = getData.data.data[0];
-      const usersArray = resourceData.users;
+      const usersArray = getData.data.data; // Array of users directly
 
       // Check if email already exists
       const emailExists = usersArray.some(u => u.email?.toLowerCase() === registrationData.email.toLowerCase());
