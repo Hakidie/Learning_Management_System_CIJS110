@@ -62,6 +62,18 @@ function UserProfile() {
     e.preventDefault();
     try {
       await updateProfile(userId, profile);
+      
+      // Update AuthContext with new user data
+      if (allUsers && allUsers.length > 0) {
+        const updatedUserData = allUsers.find(u => u.id === parseInt(userId));
+        if (updatedUserData) {
+          const { login } = await import('../../hooks/useAuth').then(m => m.useAuth());
+          // Note: We need to use the login function from useAuth context
+          // For now, we'll just refresh the page to reload data
+          window.location.reload();
+        }
+      }
+      
       alert('Profile updated successfully!');
     } catch (err) {
       alert('Failed to update profile: ' + err.message);
