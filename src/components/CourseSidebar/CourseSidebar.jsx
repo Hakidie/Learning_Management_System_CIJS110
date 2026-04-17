@@ -63,7 +63,7 @@ const CourseSidebar = ({ courseData, viewType }) => {
     }
   };
   return (
-    <div className='course-sidebar-container' style={{ marginTop: viewType !== 'default' ? '72px' : '0px' }}>
+    <div className='course-sidebar-container' style={{ marginTop: viewType !== 'default' ? '96px' : '0px' }}>
       <div className='course-sidebar-frame'>
         {viewType === 'default' && (
           <div className='course-sidebar-shopping'>
