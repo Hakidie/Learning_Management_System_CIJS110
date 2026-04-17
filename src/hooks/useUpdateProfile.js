@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getApiUrl } from '../config/api';
 
 function useUpdateProfile() {
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ function useUpdateProfile() {
     setSuccess(false);
 
     try {
-      const apiBaseUrl = `https://mindx-mockup-server.vercel.app/api/resources/users?apiKey=69a9288da99f2cbf33b34607`;
+      const apiBaseUrl = getApiUrl('users');
       
       // Fetch current users data to find the target user and get their _id
       const getResponse = await fetch(apiBaseUrl);
@@ -54,7 +55,8 @@ function useUpdateProfile() {
       console.log('Sending updated user:', updatedUser);
 
       // Send updated user data using PUT with the user's _id
-      const putUrl = `https://mindx-mockup-server.vercel.app/api/resources/users/${userObjectId}?apiKey=69a9288da99f2cbf33b34607`;
+      const { API_BASE_URL, API_KEY } = await import('../config/api');
+      const putUrl = `${API_BASE_URL}/api/resources/users/${userObjectId}?apiKey=${API_KEY}`;
       
       const putResponse = await fetch(putUrl, {
         method: 'PUT',
