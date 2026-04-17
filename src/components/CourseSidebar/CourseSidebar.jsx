@@ -5,7 +5,7 @@ import fallbackImage from '../../assets/Pictures/courses/default.svg';
 import { useAuth } from '../../hooks/useAuth';
 import useBuyCourse from '../../hooks/useBuyCourse';
 import { getApiUrl } from '../../config/api';
-import downArrowIcon from '../../../assets/Icons/down-arrow.svg';
+import downArrowIcon from '../../assets/Icons/down-arrow.svg';
 import { useState } from 'react';
 
 
