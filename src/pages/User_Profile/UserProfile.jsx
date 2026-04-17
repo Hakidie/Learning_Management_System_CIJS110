@@ -1,16 +1,21 @@
 import './UserProfile.css';
 
-import React, { useState, useEffect } from 'react';
-import { useParams, useOutletContext } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, useOutletContext, useNavigate } from 'react-router-dom';
 
 import placeholderProfilePicture from '../../assets/Pictures/placeholderProfile.svg';
 
 import useUpdateProfile from '../../hooks/useUpdateProfile';
+import { useAuth } from '../../hooks/useAuth';
+import useGetUser from '../../hooks/getUsers';
 
 function UserProfile() {
   const { userId } = useParams();
-  const { userData } = useOutletContext();
+  // const { userData } = useOutletContext();
   const { updateProfile, loading, error, success } = useUpdateProfile();
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+  const allUsers = useGetUser(); // Fetch fresh data from API
   
   const [profile, setProfile] = useState({
     firstName: '',
@@ -25,23 +30,28 @@ function UserProfile() {
     facebook: '',
   });
 
-  // Load user data when available
+  // Load user data from mindx mock up server
   useEffect(() => {
-    if (userData) {
-      setProfile({
-        firstName: userData.firstName || '',
-        lastName: userData.lastName || '',
-        headline: userData.headline || '',
-        description: userData.description || '',
-        language: userData.language || 'English',
-        website: userData.links?.website || '',
-        x: userData.links?.x || '',
-        linkedln: userData.links?.linkedln || '',
-        Youtube: userData.links?.youtube || '',
-        Facebook: userData.links?.facebook || '',
-      });
+    if (allUsers && allUsers.length > 0) {
+      // Find the current user from fresh API data
+      const freshUserData = allUsers.find(u => u.id === parseInt(userId));
+      
+      if (freshUserData) {
+        setProfile({
+          firstName: freshUserData.firstName || '',
+          lastName: freshUserData.lastName || '',
+          headline: freshUserData.headline || '',
+          description: freshUserData.description || '',
+          language: freshUserData.language || 'English',
+          website: freshUserData.links?.website || '',
+          x: freshUserData.links?.x || '',
+          linkedln: freshUserData.links?.linkedln || '',
+          youtube: freshUserData.links?.youtube || '',
+          facebook: freshUserData.links?.facebook || '',
+        });
+      }
     }
-  }, [userData]);
+  }, [allUsers, userId]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -56,6 +66,11 @@ function UserProfile() {
     } catch (err) {
       alert('Failed to update profile: ' + err.message);
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   };
 
   return (
@@ -169,6 +184,12 @@ function UserProfile() {
         <button type='submit' style={{ marginTop: '20px', padding: '10px 20px' }} disabled={loading}>
           {loading ? 'Saving...' : 'Save Changes'}
         </button>
+        
+        {/* Logout button */}
+        <button type='button' onClick={handleLogout} style={{ marginTop: '10px', padding: '10px 20px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+          Logout
+        </button>
+        
         {error && <p style={{ color: 'red' }}>Error: {error}</p>}
         {success && <p style={{ color: 'green' }}>Profile updated successfully!</p>}
       </form>
