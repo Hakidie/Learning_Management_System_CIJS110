@@ -2,6 +2,7 @@ import './Course_Card_User.css';
 
 import { Link, useParams } from 'react-router-dom';
 import StarRating from '../StarRating/StarRating';
+import fallbackImage from '../../assets/Pictures/courses/default.svg';
 
 function CourseCard({ course, viewType, source = 'categories' }) {
   const { userId } = useParams();
@@ -13,7 +14,7 @@ function CourseCard({ course, viewType, source = 'categories' }) {
       <Link to={courseLink} className='course-card-link' style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className='course-card'>
           <div className='course-card-picture'>
-            <img src={course.img} alt={course.title} />
+            <img src={course.img || fallbackImage} alt={course.title} onError={(e) => { e.target.src = fallbackImage; }} />
           </div>
 
           <h3>{course.title}</h3>
