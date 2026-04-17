@@ -3,6 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import useRegisterUser from '../../hooks/useRegisterUser';
 import './Register.css';
+import Header from '../../components/Header/Header';
+import registerPicture from '../../assets/Pictures/register.svg';
+import arrowIcon from '../../assets/Icons/arrow-narrow-right.svg';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -70,89 +73,102 @@ function Register() {
   };
 
   return (
-    <div className='register-container'>
-      <div className='register-box'>
-        <h1>Create Account</h1>
-        
-        {error && <div className='error-message'>{error}</div>}
+    <div className='register-page'>
+      <Header />
 
-        <form onSubmit={handleRegister}>
-          <div className='form-row'>
-            <div className='form-group'>
-              <label htmlFor='firstName'>First Name</label>
-              <input
-                type='text'
-                id='firstName'
-                name='firstName'
-                value={formData.firstName}
-                onChange={handleChange}
-                placeholder='First name'
-                required
-              />
-            </div>
+      <main className='register-container'>
+        <div className='register-picture'>
+          <img src={registerPicture} alt='register picture' />
+        </div>
 
-            <div className='form-group'>
-              <label htmlFor='lastName'>Last Name</label>
-              <input
-                type='text'
-                id='lastName'
-                name='lastName'
-                value={formData.lastName}
-                onChange={handleChange}
-                placeholder='Last name'
-                required
-              />
-            </div>
+        <div className='register-frame'>
+          <div className='register-box'>
+            <h1>Create Your Account</h1>
+
+            <form className='register-form' onSubmit={handleRegister}>
+
+              <div className='form-group'>
+                <label htmlFor='firstName'>Full Name</label>
+
+                <div className='form-row'>
+                  <input
+                    type='text'
+                    id='firstName'
+                    name='firstName'
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    placeholder='First name'
+                    required
+                  />
+
+                  <input
+                    type='text'
+                    id='lastName'
+                    name='lastName'
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    placeholder='Last name'
+                    required
+                  />
+                </div>
+
+              </div>
+
+              <div className='form-group'>
+                <label htmlFor='email'>Email</label>
+                <input
+                  type='email'
+                  id='email'
+                  name='email'
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder='Enter your email'
+                  required
+                />
+              </div>
+
+              <div className='form-group'>
+                <label htmlFor='password'>Password</label>
+
+                <input
+                  type='password'
+                  id='password'
+                  name='password'
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder='At least 6 characters'
+                  required
+                />
+              </div>
+
+              <div className='form-group'>
+                <label htmlFor='confirmPassword'>Confirm Password</label>
+                <input
+                  type='password'
+                  id='confirmPassword'
+                  name='confirmPassword'
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  placeholder='Confirm password'
+                  required
+                />
+              </div>
+
+              {/* <button type='submit' disabled={loading}>
+                {loading ? 'Creating Account...' : 'Register'}
+              </button> */}
+
+              <button className='create-account-button' type='submit'>
+                <p>Create Account</p>
+                <img src={arrowIcon} alt='arrow icon' />
+              </button>
+            </form>
+
+            {error && <div className='error-message'>{error}</div>}
+
           </div>
-
-          <div className='form-group'>
-            <label htmlFor='email'>Email</label>
-            <input
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              placeholder='Enter your email'
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='password'>Password</label>
-            <input
-              type='password'
-              id='password'
-              name='password'
-              value={formData.password}
-              onChange={handleChange}
-              placeholder='At least 6 characters'
-              required
-            />
-          </div>
-
-          <div className='form-group'>
-            <label htmlFor='confirmPassword'>Confirm Password</label>
-            <input
-              type='password'
-              id='confirmPassword'
-              name='confirmPassword'
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder='Confirm password'
-              required
-            />
-          </div>
-
-          <button type='submit' disabled={loading}>
-            {loading ? 'Creating Account...' : 'Register'}
-          </button>
-        </form>
-
-        <p className='login-link'>
-          Already have an account? <Link to='/login'>Login here</Link>
-        </p>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }

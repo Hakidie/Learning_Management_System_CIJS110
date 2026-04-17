@@ -3,6 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import useGetUsers from '../../hooks/getUsers';
 import './Login.css';
+import Header from '../../components/Header/Header';
+import loginPicture from '../../assets/Pictures/login.svg';
+import arrowIcon from '../../assets/Icons/arrow-narrow-right.svg';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -50,64 +53,54 @@ function Login() {
   };
 
   return (
-    <div className='login-container'>
-      <div className='login-box'>
-        <h1>Login</h1>
-        
-        {error && <div className='error-message'>{error}</div>}
+    <div className='login-page'>
+      <Header />
 
-        <form onSubmit={handleLogin}>
-          <div className='form-group'>
-            <label htmlFor='email'>Email</label>
-            <input
-              type='email'
-              id='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='Enter your email'
-              required
-            />
+      <main className='login-container'>
+        <div className='login-frame'>
+          <div className='login-box'>
+            <h1>Sign in to your account</h1>
+
+            <form className='login-form' onSubmit={handleLogin}>
+              <div className='form-group'>
+                <label htmlFor='email'>Email</label>
+                <input
+                  type='email'
+                  id='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder='Enter your email'
+                  required
+                />
+              </div>
+
+              <div className='form-group'>
+                <label htmlFor='password'>Password</label>
+                <input
+                  type='password'
+                  id='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder='Enter your password'
+                  required
+                />
+              </div>
+
+              <button className='sign-in-button' type='submit'>
+                <p>Sign in</p>
+                <img src={arrowIcon} alt='arrow icon' />
+              </button>
+
+              {error && <div className='error-message'>{error}</div>}
+            </form>
           </div>
-
-          <div className='form-group'>
-            <label htmlFor='password'>Password</label>
-            <input
-              type='password'
-              id='password'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Enter your password'
-              required
-            />
-          </div>
-
-          <button type='submit' disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
-
-        <p className='register-link'>
-          Don't have an account? <Link to='/register'>Register here</Link>
-        </p>
-
-        {/* For testing - list available users */}
-        <div className='test-users'>
-          <p>Test Users (click to auto-fill):</p>
-          {allUsers.slice(0, 3).map(user => (
-            <button
-              key={user.id}
-              type='button'
-              className='test-user-btn'
-              onClick={() => {
-                setEmail(user.email || `user${user.id}@test.com`);
-                setPassword('password');
-              }}
-            >
-              User {user.id}: {user.firstName}
-            </button>
-          ))}
+          
         </div>
-      </div>
+
+        <div className='login-picture'>
+          <img src={loginPicture} alt='login picture' />
+        </div>
+      </main>
     </div>
   );
 }
