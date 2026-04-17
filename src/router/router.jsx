@@ -70,15 +70,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/user/profile/*",
-    element: <Navigate to="/login" replace />,
-  },
-  {
-    path: "/user/*",
-    element: <Navigate to="/login" replace />,
-  },
-  {
     path: "*",
-    element: <div>404 - Not Found</div>,
+    element: <Navigate to="/" replace />,
   }
 ]);
