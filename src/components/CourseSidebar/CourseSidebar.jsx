@@ -2,9 +2,27 @@ import './CourseSidebar.css';
 
 import SocialMediaIcon from '../../assets/Pictures/social_media_2.svg';
 import fallbackImage from '../../assets/Pictures/courses/default.svg';
+import { useAuth } from '../../hooks/useAuth';
+import useBuyCourse from '../../hooks/useBuyCourse';
 
 
 const CourseSidebar = ({ courseData, viewType }) => {
+  const { user } = useAuth();
+  const { buyCourse, loading } = useBuyCourse();
+
+  const handleBuyNow = async () => {
+    if (!user) {
+      alert('Please login to buy courses');
+      return;
+    }
+
+    try {
+      await buyCourse(user.id, courseData.id);
+      alert('Course purchased successfully!');
+    } catch (err) {
+      alert(err.message || 'Failed to purchase course');
+    }
+  };
   return (
     <div className='course-sidebar-container'>
       <div className='course-sidebar-frame'>
@@ -18,7 +36,9 @@ const CourseSidebar = ({ courseData, viewType }) => {
               
               <div style={{display:'flex', flexDirection:'column', gap:'16px', padding:'0px 22px 28px 22px'}}>
                 <button className='add-to-cart-button'>Add To Cart</button>
-                <button className='buy-now-button'>Buy Now</button>
+                <button className='buy-now-button' onClick={handleBuyNow} disabled={loading}>
+                  {loading ? 'Processing...' : 'Buy Now'}
+                </button>
               </div>
             </div>
 
