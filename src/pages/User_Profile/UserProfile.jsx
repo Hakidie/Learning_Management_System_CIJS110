@@ -181,12 +181,12 @@ function UserProfile() {
         </div>
         
         {/* Submit button */}
-        <button type='submit' style={{ marginTop: '20px', padding: '10px 20px' }} disabled={loading}>
+        <button type='submit' className='user-profile-button save' >
           {loading ? 'Saving...' : 'Save Changes'}
         </button>
         
         {/* Logout button */}
-        <button type='button' onClick={handleLogout} style={{ marginTop: '10px', padding: '10px 20px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+        <button type='button' className='user-profile-button logout' onClick={handleLogout} >
           Logout
         </button>
         
