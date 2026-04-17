@@ -4,10 +4,11 @@ import SocialMediaIcon from '../../assets/Pictures/social_media_2.svg';
 import fallbackImage from '../../assets/Pictures/courses/default.svg';
 import { useAuth } from '../../hooks/useAuth';
 import useBuyCourse from '../../hooks/useBuyCourse';
+import { getApiUrl } from '../../config/api';
 
 
 const CourseSidebar = ({ courseData, viewType }) => {
-  const { user } = useAuth();
+  const { user, login } = useAuth();
   const { buyCourse, loading } = useBuyCourse();
 
   const handleBuyNow = async () => {
@@ -17,7 +18,11 @@ const CourseSidebar = ({ courseData, viewType }) => {
     }
 
     try {
-      await buyCourse(user.id, courseData.id);
+      const updatedUser = await buyCourse(user.id, courseData.id);
+      
+      // Update AuthContext with the new user data that includes the bought course
+      login(updatedUser);
+      
       alert('Course purchased successfully!');
     } catch (err) {
       alert(err.message || 'Failed to purchase course');
