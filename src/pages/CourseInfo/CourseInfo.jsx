@@ -47,7 +47,7 @@ const CourseInfo = () => {
                 <iframe
                   width="100%"
                   height="800"
-                  src={course?.videoUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+                  src={course?.videoUrl || "http://www.youtube.com/watch?v=CIRGjwYgdT4"}
                   title="Course Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
