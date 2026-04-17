@@ -36,7 +36,9 @@ const CourseInfo = () => {
           <div className='course-info-frame'>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '17px' }}>
               <h2 className='course-info-title'>{course?.title}</h2>
-              <p className='course-info-description'>{course?.description || "Description."}</p>
+              {userOwnsCourse === false && 
+                <p className='course-info-description'>{course?.description || "Description."}</p>
+              }
             </div>
 
             {userOwnsCourse ? (
@@ -44,7 +46,7 @@ const CourseInfo = () => {
                 {/* Replace this with your actual Video Player component or iframe */}
                 <iframe
                   width="100%"
-                  height="400"
+                  height="800"
                   src={course?.videoUrl || "https://www.youtube.com/embed/dQw4w9WgXcQ"}
                   title="Course Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -74,7 +76,7 @@ const CourseInfo = () => {
           </div>
         </div>
 
-        <CourseSidebar courseData={course} viewType={'default'} />
+        <CourseSidebar courseData={course} viewType={userOwnsCourse ? 'owns' : 'default'} />
       </div>
 
       <Footer />
