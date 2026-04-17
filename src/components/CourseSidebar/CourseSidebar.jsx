@@ -90,7 +90,7 @@ const CourseSidebar = ({ courseData, viewType }) => {
 
         {viewType !== 'default' &&
           <div className='course-sidebar-syllabus'>
-            {courseData.chapters.map((chapter, index) => (
+            {courseData?.chapters.map((chapter, index) => (
               <Chapter key={index} chapter={chapter} />
             ))}
           </div>
