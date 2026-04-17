@@ -1,6 +1,7 @@
 import './CourseSidebar.css';
 
 import SocialMediaIcon from '../../assets/Pictures/social_media_2.svg';
+import fallbackImage from '../../assets/Pictures/courses/default.svg';
 
 
 const CourseSidebar = ({ courseData, viewType }) => {
@@ -11,7 +12,7 @@ const CourseSidebar = ({ courseData, viewType }) => {
           <div className='course-sidebar-shopping'>
             <div className='course-sidebar-buy-container'>
               <div style={{display:'flex', flexDirection:'column', gap:'32px', padding:'24px 22px 0px 22px'}}>
-                <img src={courseData?.img} alt='Course picture' />
+                <img src={courseData?.img || fallbackImage} alt='Course picture' onError={(e) => { e.target.src = fallbackImage; }} />
                 <p>${courseData?.price}</p>
               </div>
               
